@@ -21,38 +21,38 @@ class CaixaDaLanchonete {
           }
       
           let total = 0;
-          let cafeCount = 0;
-          let sanduicheCount = 0;
+          let coffeeQuantity = 0;
+          let sandwichQuantity = 0;
       
           for (const itemInfo of itens) {
-            const [codigo, quantidade] = itemInfo.split(',');
-            const item = this.cardapio[codigo];
+            const [code, amount] = itemInfo.split(',');
+            const item = this.cardapio[code];
       
             if (!item) {
               return 'Item inválido!';
             }
       
-            if (codigo === 'cafe') {
-              cafeCount += parseInt(quantidade);
-            } else if (codigo === 'sanduiche') {
-              sanduicheCount += parseInt(quantidade);
-            } else if (codigo === 'chantily' && cafeCount === 0) {
+            if (code === 'cafe') {
+              coffeeQuantity += parseInt(amount);
+            } else if (code === 'sanduiche') {
+              sandwichQuantity += parseInt(amount);
+            } else if (code === 'chantily' &&  coffeeQuantity === 0) {
               return 'Item extra não pode ser pedido sem o principal';
-            } else if (codigo === 'queijo' && sanduicheCount === 0) {
+            } else if (code === 'queijo' && sandwichQuantity === 0) {
               return 'Item extra não pode ser pedido sem o principal';
             }
     
-            if (quantidade <= 0) {
+            if (amount <= 0) {
                 return "Quantidade inválida!";
                 }
       
-            total += item.valor * parseInt(quantidade);
+            total += item.valor * parseInt(amount);
           }
       
           if (formaDePagamento === 'dinheiro') {
-            total *= 0.95; // 5% de desconto
+            total *= 0.95; 
           } else if (formaDePagamento === 'credito') {
-            total *= 1.03; // 3% de acréscimo
+            total *= 1.03; 
           }
       
           return `R$ ${total.toFixed(2).replace('.', ',')}`;
