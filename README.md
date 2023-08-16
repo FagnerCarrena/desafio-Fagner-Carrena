@@ -1,6 +1,6 @@
 # Desafio Fagner-Carrena
 
-O seguinte foi feito para terminar o desafio, pois bem, ele consiste na automatização do sistema de transações financeiras da Lanchonete da DB. A minha incumbência foi a elaboração e implementação da lógica subjacente ao cálculo dos montantes das transações, com base nas opções disponíveis no cardápio, considerando as normas vigentes e eventuais concessões de desconto aplicáveis no âmbito da operação da Lanchonete.
+O seguinte codigo foi feito para terminar o desafio, pois bem, ele consiste na automatização do sistema de transações financeiras da Lanchonete da DB. A minha incumbência foi a elaboração e implementação da lógica subjacente ao cálculo dos montantes das transações, com base nas opções disponíveis no cardápio, considerando as normas vigentes e eventuais concessões de desconto aplicáveis no âmbito da operação da Lanchonete.
 
 # CAIXA DA LANCHONETE
 
