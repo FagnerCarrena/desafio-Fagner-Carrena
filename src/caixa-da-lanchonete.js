@@ -10,11 +10,14 @@ class CaixaDaLanchonete {
           'combo1': { descricao: '1 Suco e 1 Sanduíche', valor: 9.50 },
           'combo2': { descricao: '1 Café e 1 Sanduíche', valor: 7.50 }
         };
+
+        this.formasDePagamento = ["dinheiro", "debito", "credito"];
       }
-calcularValorDaCompra(formaDePagamento, itens) {
-  if (!['debito', 'credito', 'dinheiro'].includes(formaDePagamento)) {
-      return 'Forma de pagamento inválida!';
-     }
+
+calcularValorDaCompra(metodoDePagamento, itens) {
+  if (!this.formasDePagamento.includes(metodoDePagamento)) {
+    return "Forma de pagamento inválida!";
+}
       
   if (itens.length === 0) {
      return 'Não há itens no carrinho de compra!';
@@ -49,9 +52,9 @@ calcularValorDaCompra(formaDePagamento, itens) {
   total += item.valor * parseInt(amount);
     }
       
-   if (formaDePagamento === 'dinheiro') {
+   if (metodoDePagamento === 'dinheiro') {
       total *= 0.95; 
-    } else if (formaDePagamento === 'credito') {
+    } else if (metodoDePagamento === 'credito') {
      total *= 1.03; 
     }
       
@@ -61,6 +64,6 @@ calcularValorDaCompra(formaDePagamento, itens) {
  export { CaixaDaLanchonete}
       
       const caixa = new CaixaDaLanchonete();
-      console.log(caixa.calcularValorDaCompra('debito', [ 'chantily,1'])); 
-      console.log(caixa.calcularValorDaCompra( 'dinheiro', ['cafe, 0', 'chantily, 0'])); 
+      console.log(caixa.calcularValorDaCompra('credit', [ 'combo1,1','cafe,2'])); 
+      //console.log(caixa.calcularValorDaCompra( 'dinheiro', ['cafe, 0', 'chantily, 0'])); 
       
