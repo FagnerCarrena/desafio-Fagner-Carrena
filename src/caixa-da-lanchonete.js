@@ -11,56 +11,56 @@ class CaixaDaLanchonete {
           'combo2': { descricao: '1 Café e 1 Sanduíche', valor: 7.50 }
         };
       }
-    calcularValorDaCompra(formaDePagamento, itens) {
-        if (!['debito', 'credito', 'dinheiro'].includes(formaDePagamento)) {
-            return 'Forma de pagamento inválida!';
-          }
+calcularValorDaCompra(formaDePagamento, itens) {
+  if (!['debito', 'credito', 'dinheiro'].includes(formaDePagamento)) {
+      return 'Forma de pagamento inválida!';
+     }
       
-          if (itens.length === 0) {
-            return 'Não há itens no carrinho de compra!';
-          }
+  if (itens.length === 0) {
+     return 'Não há itens no carrinho de compra!';
+    }
       
-          let total = 0;
-          let coffeeQuantity = 0;
-          let sandwichQuantity = 0;
+    let total = 0;
+    let coffeeQuantity = 0;
+    let sandwichQuantity = 0;
       
-          for (const itemInfo of itens) {
-            const [code, amount] = itemInfo.split(',');
-            const item = this.cardapio[code];
+  for (const itemInfo of itens) {
+    const [code, amount] = itemInfo.split(',');
+    const item = this.cardapio[code];
       
-            if (!item) {
-              return 'Item inválido!';
-            }
+     if (!item) {
+      return 'Item inválido!';
+      }
       
-            if (code === 'cafe') {
-              coffeeQuantity += parseInt(amount);
-            } else if (code === 'sanduiche') {
-              sandwichQuantity += parseInt(amount);
-            } else if (code === 'chantily' &&  coffeeQuantity === 0) {
-              return 'Item extra não pode ser pedido sem o principal';
-            } else if (code === 'queijo' && sandwichQuantity === 0) {
-              return 'Item extra não pode ser pedido sem o principal';
-            }
+    if (code === 'cafe') {
+      coffeeQuantity += parseInt(amount);
+   } else if (code === 'sanduiche') {
+      sandwichQuantity += parseInt(amount);
+   } else if (code === 'chantily' &&  coffeeQuantity === 0) {
+   return 'Item extra não pode ser pedido sem o principal';
+   } else if (code === 'queijo' && sandwichQuantity === 0) {
+   return 'Item extra não pode ser pedido sem o principal';
+   }
     
-            if (amount <= 0) {
-                return "Quantidade inválida!";
-                }
+   if (amount <= 0) {
+   return "Quantidade inválida!";
+   }
       
-            total += item.valor * parseInt(amount);
-          }
+  total += item.valor * parseInt(amount);
+    }
       
-          if (formaDePagamento === 'dinheiro') {
-            total *= 0.95; 
-          } else if (formaDePagamento === 'credito') {
-            total *= 1.03; 
-          }
+   if (formaDePagamento === 'dinheiro') {
+      total *= 0.95; 
+    } else if (formaDePagamento === 'credito') {
+     total *= 1.03; 
+    }
       
-          return `R$ ${total.toFixed(2).replace('.', ',')}`;
+   return `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
       }
-      export { CaixaDaLanchonete}
-      // Exemplos de uso
+ export { CaixaDaLanchonete}
+      
       const caixa = new CaixaDaLanchonete();
-      //console.log(caixa.calcularValorDaCompra('debito', [ 'chantily,1'])); // Saída: "R$ 4,50"
-      console.log(caixa.calcularValorDaCompra('dinheiro', ['combo1,1', 'cafe,5'])); // Saída: "R$ 15,96"
+      console.log(caixa.calcularValorDaCompra('debito', [ 'chantily,1'])); 
+      console.log(caixa.calcularValorDaCompra( 'dinheiro', ['cafe, 0', 'chantily, 0'])); 
       
